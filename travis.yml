@@ -4,10 +4,10 @@ services:
     - docker
 
 before_install:
-    - docker build -t CI=true yuuoka/docker-react -f Dockerfile.dev .
+    - docker build -t yuuoka/docker-react -f Dockerfile.dev .
 
 script:
-    - docker run yuuoka/docker-react npm run test -- --coverage
+    - docker run -e CI=true yuuoka/docker-react npm run test
 
 deploy:
     provider: elasticbeanstalk
